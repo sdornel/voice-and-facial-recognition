@@ -1,4 +1,5 @@
-import FacialRecognition from "./FacialRecognition";
+'use client'
+import FacialRecognition from './FacialRecognition';
 
 export default function Home() {
   return (
