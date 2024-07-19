@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FacialRecognitionComponent } from './facial-recognition/facial-recognition.component';
@@ -5,7 +6,7 @@ import { FacialRecognitionComponent } from './facial-recognition/facial-recognit
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FacialRecognitionComponent],
+  imports: [RouterOutlet, CommonModule, FacialRecognitionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

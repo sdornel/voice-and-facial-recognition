@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-facial-recognition',
   standalone: true,
-  imports: [],
   templateUrl: './facial-recognition.component.html',
-  styleUrl: './facial-recognition.component.css'
+  styleUrls: ['./facial-recognition.component.css'],
+  imports: [CommonModule]
 })
-export class FacialRecognitionComponent {
+export class FacialRecognitionComponent implements AfterViewInit {
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
 
+  ngAfterViewInit(): void {
+    this.initWebcam();
+  }
+
+  async initWebcam() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (this.videoElement && this.videoElement.nativeElement) {
+        this.videoElement.nativeElement.srcObject = stream;
+      }
+    } catch (err) {
+      console.error('Error accessing webcam: ', err);
+    }
+  }
 }
