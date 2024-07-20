@@ -20,9 +20,14 @@ export class FacialRecognitionComponent implements AfterViewInit {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       if (this.videoElement && this.videoElement.nativeElement) {
         this.videoElement.nativeElement.srcObject = stream;
+        this.videoElement.nativeElement.onplay = () => this.onPlay();
       }
     } catch (err) {
       console.error('Error accessing webcam: ', err);
     }
+  }
+
+  onPlay() {
+
   }
 }

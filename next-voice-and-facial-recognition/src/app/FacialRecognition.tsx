@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 export default function FacialRecognition() {
-  const videoRef = useRef(null as any);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const getUserMedia = async () => {
@@ -9,6 +9,7 @@ export default function FacialRecognition() {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          videoRef.current.onplay = () => onPlay();
         }
       } catch (err) {
         console.error("Error accessing webcam: ", err);
@@ -17,6 +18,10 @@ export default function FacialRecognition() {
 
     getUserMedia();
   }, []);
+
+  const onPlay = () => {
+
+  }
 
   return (
     <div>
