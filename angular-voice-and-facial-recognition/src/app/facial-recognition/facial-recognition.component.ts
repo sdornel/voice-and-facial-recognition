@@ -27,6 +27,7 @@ export class FacialRecognitionComponent implements AfterViewInit {
     }
   }
 
+  // keep on processing the frames from camera
   onPlay() {
 
   }

@@ -19,6 +19,7 @@ export default function FacialRecognition() {
     getUserMedia();
   }, []);
 
+  // keep on processing the frames from camera
   const onPlay = () => {
 
   }
